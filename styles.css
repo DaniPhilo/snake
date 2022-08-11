@@ -36,6 +36,19 @@ h2 {
     text-transform: capitalize;
 }
 
+.customization-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.speed-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 button {
     text-transform: capitalize;
     cursor: pointer;

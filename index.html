@@ -16,7 +16,15 @@
 
     <div id="commands">
         <h2>snake</h1>
-            <h2>score</h2>
+        <h2>score: <span id="score-counter">0</span></h2>
+        <div class="customization-btns">
+            <div class="speed-btn-container">
+                <p>speed</p>
+                <button type="button" id="decrement-speed">-</button>
+                <p id="speed-counter">1</p>
+                <button type="button" id="increment-speed">+</button>
+            </div>
+        </div>
     </div>
 
     <div id="board"></div>
@@ -24,7 +32,7 @@
     <div class="game-over-module hidden">
         <div id="game-over-info">
             <h2>game over</h2>
-            <h3>score: </h3>
+            <h3>score: <span id="score-result"></span></h3>
             <div id="game-over-btns">
                 <button id='restart-btn' type="button">restart</button>
                 <!-- <button id='cancel-btn' type="button">cancel</button> -->
