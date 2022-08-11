@@ -3,8 +3,11 @@ import { changeInputDirection } from "./input.js";
 import { drawFood, updateFood } from "./food.js";
 import { updateSnake, drawSnake, wallCollision, bodyCollision, restartSnake } from "./snake.js";
 
+let isGameOver = false;
+
 let lastRenderTime = 0;
 const board = document.getElementById('board');
+
 const main = (currentTime) => {
     window.requestAnimationFrame(main);
     const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
@@ -19,28 +22,34 @@ const main = (currentTime) => {
 
 }
 
+const showGameOverModule = (boolean) => {
+    const gameOverModule = document.querySelector('.game-over-module');
+    boolean ? gameOverModule.classList.remove('hidden') : gameOverModule.classList.add('hidden')
+}
+
 const gameOver = () => {
+
     if (wallCollision()) {
+        isGameOver = true;
         changeInputDirection({ x: 0, y: 0 });
-        console.log('Wall collision!');
+        showGameOverModule(true);
     }
     if (bodyCollision()) {
+        isGameOver = true;
         changeInputDirection({ x: 0, y: 0 });
-        console.log('Body collision!');
+        showGameOverModule(true);
     }
 }
 
+const restart = () => {
+    isGameOver = false;
+    restartSnake();
+    showGameOverModule(false);
+}
+
+const restartBtn = document.getElementById('restart-btn');
+restartBtn.addEventListener('click', restart);
+
 window.requestAnimationFrame(main);
 
-
-const startBtn = document.getElementById('start-btn');
-const restartBtn = document.getElementById('restart-btn');
-
-startBtn.addEventListener('click', event => {
-    changeInputDirection({ x: 0, y: -1 });
-});
-
-restartBtn.addEventListener('click', event => {
-    restartSnake();
-    changeInputDirection({ x: 0, y: -1 });
-});
+export { isGameOver }
