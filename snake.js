@@ -1,4 +1,5 @@
 import { getInputDirection } from "./input.js";
+import { isGameOver } from './main.js';
 
 let snakeBody = [
     { x: 11, y: 11 },
@@ -15,15 +16,17 @@ const updateSnake = () => {
 }
 
 const drawSnake = (board) => {
-    board.innerHTML = '';
-    snakeBody.forEach(el => {
-        const snakePiece = document.createElement('div');
-        snakePiece.style.gridRowStart = el.y;
-        snakePiece.style.gridColumnStart = el.x;
-        snakePiece.classList.add('snake');
+    if (!isGameOver) {
+        board.innerHTML = '';
+        snakeBody.forEach(el => {
+            const snakePiece = document.createElement('div');
+            snakePiece.style.gridRowStart = el.y;
+            snakePiece.style.gridColumnStart = el.x;
+            snakePiece.classList.add('snake');
 
-        board.appendChild(snakePiece);
-    })
+            board.appendChild(snakePiece);
+        });
+    }
 }
 
 const growSnake = (quantity) => {
@@ -38,7 +41,7 @@ const isOnSnake = (position, { ignoreFirstElement = false } = {}) => {
     return snakeBody.some((element, index) => {
         if (ignoreFirstElement && index === 0) return false
         return position.x === element.x && position.y === element.y
-    })
+    });
 }
 
 const wallCollision = () => {

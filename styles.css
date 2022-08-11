@@ -65,3 +65,43 @@ button {
     background-color: hsl(70, 100%, 50%);
     /* border: .25vmin solid black; */
 }
+
+.game-over-module {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: hsla(220, 2%, 32%, 0.5);
+}
+
+#game-over-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1.5rem;
+
+    background-color: var(--bg-color);
+    border-radius: 5px;
+}
+
+#game-over-info > h2 {
+    margin: 0;
+    text-transform: uppercase;
+}
+#game-over-info > h3 {
+    text-transform: capitalize;
+}
+
+.hidden {
+    display: none;
+}

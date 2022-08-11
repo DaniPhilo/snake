@@ -1,4 +1,5 @@
 import { BOARD_SIZE, GROWTH_RATE } from './config.js';
+import { isGameOver } from './main.js';
 import { growSnake, isOnSnake } from './snake.js'
 
 const getRandomPosition = () => {
@@ -18,12 +19,14 @@ const updateFood = () => {
 }
 
 const drawFood = (board) => {
-    const foodPiece = document.createElement('div');
-    foodPiece.style.gridRowStart = foodPosition.y;
-    foodPiece.style.gridColumnStart = foodPosition.x;
-    foodPiece.classList.add('food');
+    if (!isGameOver) {
+        const foodPiece = document.createElement('div');
+        foodPiece.style.gridRowStart = foodPosition.y;
+        foodPiece.style.gridColumnStart = foodPosition.x;
+        foodPiece.classList.add('food');
 
-    board.appendChild(foodPiece);
+        board.appendChild(foodPiece);
+    }
 }
 
 
