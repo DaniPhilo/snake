@@ -25,7 +25,7 @@ body {
 
 #commands {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     column-gap: 2rem;
@@ -51,7 +51,8 @@ h2 > span {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
+    margin-bottom: 0.5rem;
 }
 
 .speed-btn-container {
@@ -59,6 +60,22 @@ h2 > span {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+}
+
+#increment-speed,
+#decrement-speed {
+    width: 1.5rem;
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    border: none;
+    font-size: 2rem;
+    /* font-weight: bold; */
+
+}
+
+#increment-speed:hover,
+#decrement-speed:hover {
+    color: var(--text-color);
 }
 
 button {
@@ -87,7 +104,10 @@ button {
 }
 
 .food {
+    width: 70%;
+    height: 70%;
     background-color: hsl(70, 100%, 50%);
+    transform: rotate(45deg);
     /* border: .25vmin solid black; */
 }
 
