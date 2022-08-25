@@ -1,5 +1,5 @@
 import { getInputDirection } from "./input.js";
-import { isGameOver } from './main.js';
+import { isGameOver, changeScore } from './main.js';
 
 let snakeBody = [
     { x: 11, y: 11 },
@@ -35,6 +35,7 @@ const growSnake = (quantity) => {
     for (let i = 0; i < quantity; i++) {
         snakeBody.push({ x: (tale.x + input.x), y: (tale.y + input.y) })
     }
+    changeScore(10);
 }
 
 const isOnSnake = (position, { ignoreFirstElement = false } = {}) => {
